@@ -1,5 +1,5 @@
 
-'''cs
+'''csharp
 public static IQueryable<TEntity> WhereIsSnapshot<TEntity>(IQueryable<TEntity> query, Expression<Func<ISnapshot, bool>> predicate) 
             where TEntity : class, IDeletable
         {            
