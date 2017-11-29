@@ -1,5 +1,3 @@
-
-'''csharp
 public static IQueryable<TEntity> WhereIsSnapshot<TEntity>(IQueryable<TEntity> query, Expression<Func<ISnapshot, bool>> predicate) 
             where TEntity : class, IDeletable
         {            
@@ -20,4 +18,3 @@ public static IQueryable<T> ActiveSet<T>(this System.Data.Entity.DbContext conte
             }
             return context.Set<T>().Where(f => f.IsDeleted == false);
         }
-'''
