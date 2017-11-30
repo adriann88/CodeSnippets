@@ -48,6 +48,7 @@ namespace Project
 }
 
 ///Interfaces used in the code above
+//IDeletable.cs
     /// <summary>
     /// Logical deletable entity
     /// </summary>
@@ -65,6 +66,7 @@ namespace Project
         bool IsDeleted { get; set; }
     }
 
+//ISnapshot.cs
     /// <summary>
     /// Logical snapshot entity
     /// </summary>
@@ -89,6 +91,7 @@ namespace Project
         return Set<T>().Where(f => f.IsSnapshot == true);
     }
 
+///Extending the database context
     /// <summary>
     /// Gets only logically deleted entities
     /// </summary>
@@ -109,5 +112,8 @@ namespace Project
 
 //Example 
 
-//Gets all the snapshots of the compliance matrices 
-var cmxEntities = ctx.SnapshotEntities<ComplianceMatrix>().Where(f => complianceMatrixIds.Contains(f.Id));
+//Gets all open compliance matrices
+var cmxEntities = ctx.ComplianceMatrices.Where(f => f.EndDate < DateTime.Now);
+//Gets all opne compliance matrices snapshots
+var cmxSnapshotEntities = ctx.SnapshotEntities<ComplianceMatrix>().Where(f => f.EndDate < DateTime.Now);
+
